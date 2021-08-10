@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <h2>Home</h2>
+    <hr>
+    <h3>Books</h3>
+<div id="root"></div>
+<script type="text/babel">
+const books = {{{books}}}
+const showDetail = (event) => {
+    console.log(event.target)
+    console.log(event.target.innerText)
+    console.log(event.target.id)
+    window.location.href = "/detail?title=" + event.target.innerText;
+}
+const BookList = (props) => {
+    const listItems = props.data.map((item) =>
+    <li key={item._id} id={item._id} onClick={props.clickHandler}>
+        {item.title}
+    </li>);
+    return <ul>{listItems}</ul>
+}
+ReactDOM.render(
+    <div><BookList data={books} clickHandler={showDetail} /></div>,
+document.getElementById('root')
+);
+</script>
+</body>
+</html>

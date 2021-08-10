@@ -6,6 +6,7 @@ export let books = [
     { title : "The Fault in Our Stars", author : "John Green", genre : "Romance", pages : "313", price : "$9.99" }
     ];
 
+    
 const getAll = () => {
     return books;
 };

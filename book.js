@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 import { connectionString } from './credentials.js';
 
+
 mongoose.connect(connectionString, {
     dbName: 'sccprojects',
     useNewUrlParser: true,

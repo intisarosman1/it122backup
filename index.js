@@ -30,6 +30,7 @@ app.get('/about', (req,res) => {
     res.send('About page');
    });
 
+
 app.get('/detail', (req,res,next) => {
     Book.findOne({ title:req.query.title }).lean()
         .then((book) => {

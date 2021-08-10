@@ -1,0 +1,29 @@
+{
+  "name": "it122",
+  "version": "1.0.0",
+  "description": "IT122 Application",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intisarosman1/IT122.git"
+  },
+  "author": "Intisar Osman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intisarosman1/IT122/issues"
+  },
+  "homepage": "https://github.com/intisarosman1/IT122#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "mongoose": "^5.13.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

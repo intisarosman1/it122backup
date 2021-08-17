@@ -12,13 +12,7 @@
 <div id="root"></div>
 <script type="text/babel">
 
-const books = {{{books}}}
-const showDetail = (event) => {
-    console.log(event.target)
-    console.log(event.target.innerText)
-    console.log(event.target.id)
-    window.location.href = "/detail?title=" + event.target.innerText;
-}
+
 const BookList = (props) => {
     const listItems = props.data.map((item) =>
     <li key={item._id} id={item._id} onClick={props.clickHandler}>
@@ -26,10 +20,56 @@ const BookList = (props) => {
     </li>);
     return <ul>{listItems}</ul>
 }
-ReactDOM.render(
-    <div><BookList data={books} clickHandler={showDetail} /></div>,
-document.getElementById('root')
-);
+
+const ItemDetails = (props) => {
+    return <div>
+        <hr />
+        <h3>Book Details</h3>
+        {props.item.title && <ul>
+            <li>title: {props.item.title}</li>
+            <li>author: {props.item.author}</li>
+            <li>genre: {props.item.genre}</li>
+            <li>pages: {props.item.pages}</li>
+            <li>price: {props.item.price}</li>
+        </ul>
+        }
+    <button onClick={props.reset}>Reset</button>
+    </div>
+}
+
+class BookApp extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            items: {{{ books }}},
+            currentItem: {}
+        };
+        this.selectionItem = this.selectItem.bind(this);
+    }
+
+    selectItem = (event) => {
+        console.log(event.target.innerText)
+        const found = this.state.items.find((item) => {
+            return item.title === event.target.innerText;
+        });
+        this.setState({currentItem: found})
+    }
+
+    render() {
+        return (
+          <div>
+            <BookList data={this.state.items} clickHandler={this.selectItem} />
+            <ItemDetails item={this.state.currentItem} />
+          </div> );
+      }
+    }
+    ReactDOM.render(<BookApp />, document.getElementById('root'));
+
+
+// ReactDOM.render(
+    // <div><BookList data={books} clickHandler={showDetail} /></div>,
+// document.getElementById('root')
+//);
 </script>
 </body>
 </html>
